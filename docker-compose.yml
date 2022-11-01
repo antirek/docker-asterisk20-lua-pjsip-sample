@@ -1,0 +1,12 @@
+version: '2'
+services:
+  asterisk17-lua:
+    image: asterisk20-lua
+    network_mode: host
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "./store/etc/asterisk/:/etc/asterisk/"
+      - "./store/var/log/asterisk:/var/log/asterisk"
+      - "./store/var/menu:/var/menu/"
+    restart: always
+    command: asterisk && tail -f /var/log/asterisk/messages
